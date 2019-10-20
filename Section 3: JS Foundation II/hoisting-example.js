@@ -22,3 +22,13 @@ var varFunc = () => {
   console.log('var funky')
 }
 varFunc() // var funky
+
+redefiningFunction() // last (this is interesting but should never happen with a simple linter)
+
+function redefiningFunction () {
+  return console.log('first')
+}
+
+function redefiningFunction () {
+  console.log('last')
+}
