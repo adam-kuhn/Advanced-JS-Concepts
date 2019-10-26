@@ -9,11 +9,22 @@
     <script type="text/javascript">
       //<![CDATA[
       var varOne = 1
+      const iffe = function () { // this iffe allows use to assing properties to an object and use any name we want as we know it will not collide with our global scope name space
+        function functionOne () {
+          return "the real function one"
+        }
+        return {
+          functionOne: functionOne
+        }
+      }()
       // ]]>
     </script>
     <script type="text/javascript">
       //<![CDATA[
       var varTwo = 2
+      function functionOne () {
+        return "I'm a bad function, I'm global"
+      }
       // ]]>
     </script>
     <script type="text/javascript">
@@ -35,3 +46,4 @@
 </html>
 <!-- in the above example varOne will be overwritten by the second declaration and have a value of 100 -->
 <!-- constOne will remain with a value of 1 and provide a syntaxError because constOne is already defined -->
+<!-- we are able to have two functions called functionOne and both can be called without issues because the IIFE wraps the first one to it's function scope and returns an object for us to use -->
