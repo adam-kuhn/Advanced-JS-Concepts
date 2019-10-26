@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <h3>Colliding variabsl</h3>
+    <p>In the console try to access the below variables to see what you get</p>
+    <script type="text/javascript">
+      //<![CDATA[
+      var varOne = 1
+      // ]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+      var varTwo = 2
+      // ]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+      var varOne = 100
+      // ]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+      const constOne = 1
+      // ]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+      const constOne = 200
+      // ]]>
+    </script>
+  </body>
+</html>
+<!-- in the above example varOne will be overwritten by the second declaration and have a value of 100 -->
+<!-- constOne will remain with a value of 1 and provide a syntaxError because constOne is already defined -->
