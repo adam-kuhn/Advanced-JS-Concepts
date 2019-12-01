@@ -29,3 +29,23 @@ const delayedFunction = () => {
 // and closure provides access to this variable
 
 delayedFunction()
+
+// MEMORY EFFICIENCY
+const heavyDuty= (index) => {
+  const bigArray = new Array(6000).fill('this is big')
+  console.log('created a massive array')
+  return bigArray[index]
+}
+const heavyDutyEfficent = () => {
+  const bigArray = new Array(6000).fill('this is big')
+  console.log('created a massive array but only once')
+  return (index) => bigArray[index]
+}
+console.log(heavyDuty(5893))
+console.log(heavyDuty(2))
+console.log(heavyDuty(244))
+const findItemInBigArray = heavyDutyEfficent()
+console.log(findItemInBigArray(5893))
+console.log(findItemInBigArray(2))
+console.log(findItemInBigArray(244))
+// with our heavyDutyEfficient function we can use closure to create the big array only once
