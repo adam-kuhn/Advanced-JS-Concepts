@@ -1,3 +1,4 @@
+
 const a = () => {
   const old = 'grandpa'
   return () => {
@@ -10,6 +11,7 @@ const a = () => {
   }
 }
 
+// Closure allows functions to access variables even once it has left the environment from which it was declared
 console.log(a()()()) // 'grandpa dad kid'
 const second = a() // function a() has been called and popped off the stack
 const last = second() // the return function is called and popped off the stack
