@@ -1,3 +1,6 @@
+// manually creating a prototype chain with __proto__ is depecrated and should NEVER be used
+// lots of perfomance issues. This is good for getting an understanding of the the prototype chain though
+// the course will show a better way to do this later on in the object orientated section
 const bigMonster = {
   name: 'Trogdor',
   magicPowers: true,
@@ -27,7 +30,7 @@ talkingLittleMonster() // I am Pluck and if you attack me you will be sorry...
 // but if we want to access all of the big monster properties that we do not have we can create a prototype chain
 
 // create a proto type chain from littleMonster up to bigMonster
-littleMonster.__proto__ = bigMonster // seems like creating prototypes this was is depecrated https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto still interesting though
+littleMonster.__proto__ = bigMonster // seems like creating prototypes this was is depecrated https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto
 
 littleMonster.battleCry() // I am Pluck and my magic will destroy you
 
