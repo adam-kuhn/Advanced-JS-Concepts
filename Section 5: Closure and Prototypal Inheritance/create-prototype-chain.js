@@ -47,3 +47,9 @@ for (let prop in littleMonster) {
     console.log(prop) // name, fight
   }
 }
+
+// this is an example of how to adjust the prototype chain correctly using Object.create()
+const obj1 = {name: 'I am the first'}
+const obj2 = Object.create(obj1)
+console.log(obj2.hasOwnProperty('name'))// returns false
+console.log(obj1.isPrototypeOf(obj2)) // returns true
