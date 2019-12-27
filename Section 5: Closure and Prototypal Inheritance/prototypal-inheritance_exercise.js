@@ -15,3 +15,17 @@ const test2 = new Date('1900-10-10')
 
 console.log(test1.lastYear())
 console.log(test2.lastYear())
+
+// #2
+// Modify the .map() to print a ":)" infront of the mapped value
+function map () {
+  let mappedValues = []
+  for (let value of this) {
+    mappedValues.push(`:) ${value}`)
+  }
+  return mappedValues
+}
+
+Array.prototype.map = map
+const test3 = [1, 2, 3]
+console.log(test3.map())
