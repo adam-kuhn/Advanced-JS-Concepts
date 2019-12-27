@@ -37,11 +37,17 @@ console.log(test3.map())
 // Function.prototype.bind = function (objWantingToBorrowMethods) {
 //   return this.call(objWantingToBorrowMethods, '')
 // }
-// correct solution
+// correct solution //
+// Function.prototype.bind = function (objWantingToBorrowMethods) {
+//   const self = this
+//   return function () {
+//     self.apply(objWantingToBorrowMethods)
+//   }
+// }
+// OR with arrow function
 Function.prototype.bind = function (objWantingToBorrowMethods) {
-  const self = this
-  return function () {
-    self.apply(objWantingToBorrowMethods)
+  return () => {
+    this.apply(objWantingToBorrowMethods)
   }
 }
 const myBaseObject = {
