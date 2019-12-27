@@ -33,10 +33,13 @@ console.log(test3.map())
 // #3
 // How would you be able to create your own .bind() methus using call or apply
 
-// my attempt at solving...almost
-// Function.prototype.bind = function (objWantingToBorrowMethods) {
-//   return this.call(objWantingToBorrowMethods, '')
-// }
+// my attempt at solving...almost so my solution did work sort of. If used return
+// in the myNameIs function instead of console log I return a value as demonstrated
+// by whoAmI2. However bind is supposed to return a function, which is why my original solution
+// is not correct
+Function.prototype.bind2 = function (objWantingToBorrowMethods) {
+  return this.call(objWantingToBorrowMethods, '')
+}
 // correct solution //
 // Function.prototype.bind = function (objWantingToBorrowMethods) {
 //   const self = this
@@ -56,10 +59,19 @@ const myBaseObject = {
     console.log(this.name)
   }
 }
-
+const myBaseObject2 = {
+  name: 'James',
+  myNameIs () {
+    return this.name
+  }
+}
 const me = {
   name: 'Adam'
 }
 
 const whoAmI = myBaseObject.myNameIs.bind(me)
 whoAmI()
+
+const whoAmI2 = myBaseObject2.myNameIs.bind2(me)
+
+console.log('2', whoAmI2)
