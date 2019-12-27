@@ -36,3 +36,14 @@ littleMonster.battleCry() // I am Pluck and my magic will destroy you
 
 console.log(bigMonster.isPrototypeOf(littleMonster)) // true. bigMonster is used as a prototype to create littleMonster
 console.log(littleMonster.isPrototypeOf(bigMonster)) // false
+
+// looping over an objects properties shows how littleMonster has access to bigMonster properties
+for (let prop in littleMonster) {
+  console.log(prop) // name, fight, magicPowers, battleCry
+}
+// use .hasOwnProperty() to show that the lizard object does not actually change. It just has access to methods it has inherited
+for (let prop in littleMonster) {
+  if (littleMonster.hasOwnProperty(prop)) {
+    console.log(prop) // name, fight
+  }
+}
