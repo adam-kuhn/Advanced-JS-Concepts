@@ -29,3 +29,31 @@ function map () {
 Array.prototype.map = map
 const test3 = [1, 2, 3]
 console.log(test3.map())
+
+// #3
+// How would you be able to create your own .bind() methus using call or apply
+
+// my attempt at solving...almost
+// Function.prototype.bind = function (objWantingToBorrowMethods) {
+//   return this.call(objWantingToBorrowMethods, '')
+// }
+// correct solution
+Function.prototype.bind = function (objWantingToBorrowMethods) {
+  const self = this
+  return function () {
+    self.apply(objWantingToBorrowMethods)
+  }
+}
+const myBaseObject = {
+  name: 'James',
+  myNameIs () {
+    console.log(this.name)
+  }
+}
+
+const me = {
+  name: 'Adam'
+}
+
+const whoAmI = myBaseObject.myNameIs.bind(me)
+whoAmI()
