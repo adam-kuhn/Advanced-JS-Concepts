@@ -25,6 +25,9 @@ class Character {
   attack () {
     return 'attack with ' + this.weapon
   }
+  forChildren () {
+    return 'not for the queen'
+  }
 }
 class Queen extends Character {
   constructor (name, weapon, type) {
@@ -39,3 +42,21 @@ class Queen extends Character {
 const victoria = new Queen('Victoria', 'army', 'hearts')
 
 console.log(victoria.attack())
+
+// experiment
+class Princess extends Queen {
+  constructor (name, weapon, type, age) {
+    super(name, weapon, type)
+    this.age = age
+  }
+  princessAttack () {
+    return super.attack() // this goes to Queen then to Character
+  }
+  princessMethod () {
+    return super.forChildren() // goes to Character, therefore super just means go up the prototype chain till you find this method
+  }
+}
+const cindy = new Princess('Cindy', 'starts', 'spades', '12')
+
+console.log(cindy.princessAttack())
+console.log(cindy.princessMethod())
