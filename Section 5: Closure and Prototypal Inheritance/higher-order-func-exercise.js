@@ -18,3 +18,5 @@ const multipleBySix = multiplyBy(6)
 console.log(multiplyByTwo(4)) // 8
 console.log(multipleBySix(4)) // 24
 console.log(multiplyBy(3)(10)) //30, multiplyBy returns a function so can directly call it again
+
+// this is currying as described in section 7
