@@ -81,3 +81,36 @@ const forAwaitOf = async (promises) => {
 const promises = [basicPromise, promise1, promise2, promise3, somePromise]
 
 forAwaitOf(promises)
+
+// Parallel, Race, Sequential
+const promisify = (item, delay) =>
+  new Promise((resolve) =>
+    setTimeout(() =>
+      resolve(item), delay))
+
+const a = () => promisify('a', 100)
+const b = () => promisify('b', 5000)
+const c = () => promisify('c', 3000)
+
+async function parallel () {
+  const promises = [a(), b(), c()]
+  const [output1, output2, output3] = await Promise.all(promises) // the function runs all promises and just awaits for them all to return, which is why it's faster then the sequence function below
+  return `parallel is done: ${output1} ${output2} ${output3}`
+}
+
+async function race () {
+  const promises = [a(), b(), c()]
+  const output1 = await Promise.race(promises) // race returns the value of whatever promise is completed first
+  return `race is done: ${output1}`
+}
+
+async function sequence () { // this function does one promise, then the next, the the next etc.,
+  const output1 = await a()
+  const output2 = await b()
+  const output3 = await c()
+  return `sequence is done ${output1} ${output2} ${output3}`
+}
+
+sequence().then(console.log)
+parallel().then(console.log)
+race().then(console.log)
