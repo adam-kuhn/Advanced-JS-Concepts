@@ -69,3 +69,15 @@ awaitAllPromises()
 // it worked (second)
 // ok ok async (third)
 // when (fourth)
+
+// for await of, is a way to iterate throught an array of promises
+
+const forAwaitOf = async (promises) => {
+  for await (let promise of promises) {
+    const result = await promise
+    console.log('for await', result)
+  }
+}
+const promises = [basicPromise, promise1, promise2, promise3, somePromise]
+
+forAwaitOf(promises)
