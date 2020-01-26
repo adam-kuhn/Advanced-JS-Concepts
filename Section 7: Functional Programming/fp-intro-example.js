@@ -67,12 +67,13 @@ const itemPurchased = purchaseItem(
   emptyCart,
   buyItem,
   applyTaxToItems,
-  addItemToCartSolution)(user2, {name: 'laptop', price: 199})
+  addItemToCartSolution)(user2, {name: 'laptop', price: 199}) // this user2, and laptop obj are the ...args in the spread operatotor
 
 function purchaseItem (...fns) { // purchase items recieves a lot of functions as arguments, so spread the functions out with the spread operator
   return fns.reduce(compose) // previousValue and the current value of the reduce set into the compose function and are run, thereby runing each functino one by one and returning the value at the en
-}
-
+} // so compose only assembles the code, it is run in the function call above, the result of the reduce is a number functions assembled in order
+// so it could be like purchaseItemAssemble = purchaseItem(fn1, fn2, fn3)
+// then purchaseItemEexecute = purchaseItemAssemble(user2, {name: 'laptop'}, price: 199)
 function addItemToCartSolution (user, item) {
   amazonHistory.push(user)
   const updatedCard = user.cart.concat([item])
