@@ -27,3 +27,45 @@ basicPromise.then(result => {
   .then(result => {
     // throw Error // catch block does not run
   })
+
+  // ASYNC AWAIT
+  // async await is syntactical sugar that uses promises under the hood
+  // async await can just be a clearer way to right the .then
+// instead of passing the returned value from the promise to the .then() func, we assign it to a variable
+const somePromise = new Promise((resolve, reject) => {
+  resolve('ok ')
+})
+const getPromiseData = async () => {
+  const firstResult = await somePromise
+  const another = await somePromise
+  console.log(firstResult + another + 'async')
+}
+getPromiseData()
+
+somePromise.then(result => {
+  console.log(result + 'native promise')
+})
+  .then(() => console.log('when'))
+
+const awaitAllPromises = async () => {
+  try {
+    // throw Error throw this Error to run cartch block
+    const [first, second, third] = await Promise.all([promise1, promise2, promise3])
+    console.log(first)
+    console.log(second)
+    console.log(third)
+  } catch (err) {
+    console.log('oop')
+    console.log(err)
+  }
+}
+awaitAllPromises()
+
+// each level of .then or await results in a longer promise execution as it seems ALL the "first" .then()'s
+// get evaluated before the second .then()'s and awaits
+// which is why we get
+
+// ok native promise (first)
+// it worked (second)
+// ok ok async (third)
+// when (fourth)
